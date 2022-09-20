@@ -12,19 +12,21 @@ int binary_tree_is_leaf(const binary_tree_t *node)
 	return (1);
 }
 /**
- * binary_tree_nodes - counts the nodes with at least
- * 1 child in a binary tree
- *
+ * binary_tree_is_full - checks if a binary tree is full
  * @tree: binary tree
- * Return: the count
+ * Return: 1 if tree is full, otherwise 0
  */
-size_t binary_tree_nodes(const binary_tree_t *tree)
+size_t binary_tree_is_full(const binary_tree_t *tree)
 {
 	size_t left, right;
 
-	if (!tree || binary_tree_is_leaf(tree))
+	if (!tree)
 		return (0);
-	left = binary_tree_nodes(tree->left);
-	right = binary_tree_nodes(tree->right);
-	return (1 + left + right);
+	if (binary_tree_is_leaf(tree) && tree->parent)
+		return (1);
+	left = binary_tree_is_full(tree->left);
+	right = binary_tree_is_full(tree->right);
+	if (left == 1 && right == 1)
+		return (1);
+	return (0);
 }
