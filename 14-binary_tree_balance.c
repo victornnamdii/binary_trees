@@ -12,7 +12,7 @@ int binary_tree_is_leaf(const binary_tree_t *node)
 	return (1);
 }
 /**
- * binary_tree_height - measures the height of a binary tree
+ * binary_tree_height2 - measures the height of a binary tree
  * @tree: pointer to binary tree to be measured
  * Return: height of tree
  */
